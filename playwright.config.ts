@@ -48,7 +48,7 @@ export default defineConfig({
     ]
   ],
   use: {
-    baseURL: getEnv("BASE_URL"),
+    baseURL: process.env.BASE_URL || getEnv("BASE_URL"),
     storageState: "storageState.json",
     trace: 'on-first-retry',
   },
