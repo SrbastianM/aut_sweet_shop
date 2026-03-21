@@ -4,7 +4,7 @@
   "description": "Front E2E for the page sweet_shop",
   "main": "index.js",
   "scripts": {
-    "endToEnd": "npx playwright test --workers=1",
+    "endToEnd": "npx playwright test",
     "positive": "npx playwright -g \"@positive\"",
     "negative": "npx playwright -g \"@negative\"",
     "debug": "npx playwright test workers=1 --ui",
