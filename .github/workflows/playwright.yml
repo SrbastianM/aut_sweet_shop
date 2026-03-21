@@ -24,6 +24,8 @@ jobs:
 
     - name: Run Playwright tests (Allure)
       run: npx playwright test
+      env:
+        BASE_URL: ${{ secrets.BASE_URL }}
 
     - name: Generate Allure Report
       run: |
