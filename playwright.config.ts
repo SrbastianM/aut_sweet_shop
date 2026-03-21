@@ -2,7 +2,7 @@ import { defineConfig, devices } from '@playwright/test';
 import { Status } from "allure-js-commons";
 import dotenv from "dotenv";
 import * as os from "node:os";
-import { getEnv } from './utils/envs';
+
 
 dotenv.config();
 
@@ -48,7 +48,7 @@ export default defineConfig({
     ]
   ],
   use: {
-    baseURL: process.env.BASE_URL || getEnv("BASE_URL"),
+    baseURL: process.env.BASE_URL,
     storageState: "storageState.json",
     trace: 'on-first-retry',
   },

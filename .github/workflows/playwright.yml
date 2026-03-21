@@ -21,6 +21,11 @@ jobs:
 
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+    
+    - name: Debug
+      run: echo "BASE_URL=$BASE_URL"
+      env:
+        BASE_URL: ${{ secrets.BASE_URL }}
 
     - name: Run Playwright tests (Allure)
       run: npx playwright test
