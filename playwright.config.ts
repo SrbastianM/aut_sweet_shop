@@ -1,8 +1,13 @@
 import { defineConfig, devices } from '@playwright/test';
 import { Status } from "allure-js-commons";
+import dotenv from "dotenv";
 import * as os from "node:os";
+import { getEnv } from './utils/envs';
+
+dotenv.config();
 
 export default defineConfig({
+  globalSetup: "./config/global.setup.ts",
   testDir: './front/test',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
@@ -43,6 +48,8 @@ export default defineConfig({
     ]
   ],
   use: {
+    baseURL: getEnv("BASE_URL"),
+    storageState: "storageState.json",
     trace: 'on-first-retry',
   },
   projects: [
@@ -50,10 +57,5 @@ export default defineConfig({
       name: 'front_chrome',
       use: { ...devices['Desktop Chrome'] },
     },
-
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    }
   ]
 });
