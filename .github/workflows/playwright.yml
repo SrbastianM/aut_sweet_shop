@@ -1,13 +1,18 @@
 name: Playwright Tests
+
 on:
   push:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+
+    env:
+      BASE_URL: ${{ secrets.BASE_URL }}
 
     steps:
     - uses: actions/checkout@v4
@@ -21,25 +26,17 @@ jobs:
 
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
-    
-    - name: Debug
-      run: echo "BASE_URL=$BASE_URL"
-      env:
-        BASE_URL: ${{ secrets.BASE_URL }}
 
-    - name: Run Playwright tests (Allure)
+    - name: Run Playwright tests
       run: npx playwright test
-      env:
-        BASE_URL: ${{ secrets.BASE_URL }}
 
     - name: Generate Allure Report
-      run: |
-        npx allure generate ./allure-results --clean -o ./allure-report
+      if: always()
+      run: npx allure generate ./allure-results --clean -o ./allure-report
 
     - name: Upload Allure report
       uses: actions/upload-artifact@v4
-      if: ${{ !cancelled() }}
+      if: always()
       with:
         name: allure-report
         path: allure-report/
-        retention-days: 30
