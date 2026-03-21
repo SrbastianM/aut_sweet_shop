@@ -6,7 +6,7 @@
   "scripts": {
     "endToEnd": "npx playwright test --workers=1",
     "debug": "npx playwright test workers=1 --ui",
-    "positive": "npx playwright -grep "
+    "positive": "npx playwright -g \"@positive\""
   },
   "keywords": [],
   "author": "",
