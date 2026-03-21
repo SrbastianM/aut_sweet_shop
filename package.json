@@ -5,14 +5,23 @@
   "main": "index.js",
   "scripts": {
     "endToEnd": "npx playwright test --workers=1",
+    "positive": "npx playwright -g \"@positive\"",
+    "negative": "npx playwright -g \"@negative\"",
     "debug": "npx playwright test workers=1 --ui",
-    "positive": "npx playwright -g \"@positive\""
+    "report": "rm -rf ./allure-report && npx allure generate ./allure-results -o ./allure-report && npx allure open ./allure-report"
   },
   "keywords": [],
-  "author": "",
+  "author": "SrbastianM",
   "license": "ISC",
   "devDependencies": {
+    "@faker-js/faker": "^10.3.0",
+    "@playwright-testing-library/test": "^4.5.0",
     "@playwright/test": "^1.58.2",
-    "@types/node": "^25.5.0"
+    "@types/node": "^25.5.0",
+    "allure": "^3.3.1",
+    "allure-playwright": "^3.6.0"
+  },
+  "dependencies": {
+    "ajv": "^8.18.0"
   }
 }
