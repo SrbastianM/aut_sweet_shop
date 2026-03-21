@@ -10,4 +10,9 @@ node_modules/
 # Environment variables
 .env
 
-# Reports
+# Reports Allure
+allure-report/
+allure-results/
+
+# vscode configs
+.vscode
