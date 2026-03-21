@@ -7,7 +7,7 @@ import { getEnv } from "../../../utils/envs";
 test("CP-01 login with preset user @positive", async ({ page }) => {
     const login = new LoginPage(page);
 
-    await page.goto(getEnv("BASE_URL"));
+    await page.goto("/");
 
     await login.navigateToLoginPage();
     await expect(login.loginHeaderIsVisible()).toBeVisible()
