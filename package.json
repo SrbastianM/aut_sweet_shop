@@ -1,0 +1,18 @@
+{
+  "name": "aut_sweet_shop",
+  "version": "1.0.0",
+  "description": "Front E2E for the page sweet_shop",
+  "main": "index.js",
+  "scripts": {
+    "endToEnd": "npx playwright test --workers=1",
+    "debug": "npx playwright test workers=1 --ui",
+    "positive": "npx playwright -grep "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^25.5.0"
+  }
+}
